@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+import './Jumbotron.css'
 
 class Jumbotron extends React.Component {
     render() {

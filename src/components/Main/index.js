@@ -1,18 +1,35 @@
 import React from 'react';
-import './style.css'
+import './Main.css'
 import Jumbotron from '../Jumbotron';
+import GameButton from './GameButton';
 
 class Main extends React.Component {
     state = {
-      score: 0
+      score: 0,
+      buttonPossibilities: [
+        {
+          id: 1,
+          imageLink: "https://via.placeholder.com/200"
+        }, 
+        {
+          id: 2,
+          imageLink: "https://via.placeholder.com/300"
+        }, 
+        {
+          id: 3,
+          imageLink: "https://via.placeholder.com/400"
+        }
+      ]
     }
 
     render() {
       return (
-        <main>
+        <div>
           <Jumbotron  />
-          I'm the Main.
-        </main>
+          <main>
+            {this.state.buttonPossibilities.map(item => <GameButton key={item.id} imageLink={item.imageLink} />)}
+          </main>
+        </div>
       );
     }
 }
