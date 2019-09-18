@@ -1,0 +1,12 @@
+div.jumbotron {
+    /* background-image: url('https://via.placeholder.com/200');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background: center / cover no-repeat url('https://via.placeholder.com/200');
+    height: 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
