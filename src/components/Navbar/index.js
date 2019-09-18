@@ -10,6 +10,8 @@ class Navbar extends React.Component {
       return (
         <nav>
           I'm the Navbar.
+          Guesses: {this.props.score}
+          High score: {this.props.highScore}
         </nav>
       );
     }
