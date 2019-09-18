@@ -23,11 +23,11 @@ class App extends React.Component {
         imageLink: "https://via.placeholder.com/400"
       }
     ]
-  }
+  };
 
   componentDidMount  = () => {
     this.randomizeOrder();
-  }
+  };
 
   updateGuess = id => {
     if (this.state.buttonGuesses.includes(id)) {
@@ -35,7 +35,16 @@ class App extends React.Component {
         buttonGuesses: [],
         score: 0
       });
+      this.randomizeOrder();
       // Some other visual function
+
+      const display = document.getElementById('main')
+
+      display.classList.add('shake-animation');
+      setTimeout(() => {
+        display.classList.remove('shake-animation');
+      }, 400);
+
       return;
     }
 
@@ -71,7 +80,7 @@ class App extends React.Component {
         />
         <div>
         <Jumbotron  />
-        <main>
+        <main id="main">
           {this.state.buttonPossibilities.map(({imageLink, id}) => 
             <GameButton 
               key={id}
@@ -84,9 +93,8 @@ class App extends React.Component {
       </div>
         <Footer />
       </div>
-      
     );
-  }
-}
+  };
+};
 
 export default App;
