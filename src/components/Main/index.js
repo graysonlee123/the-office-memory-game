@@ -19,7 +19,19 @@ class Main extends React.Component {
           id: 3,
           imageLink: "https://via.placeholder.com/400"
         }
-      ]
+      ],
+      buttonGuesses: []
+    }
+
+    updateGuess = id => {
+      if (this.state.buttonGuesses.includes(id)) {
+        return console.log("Already guessed! Game over")
+      }
+
+      this.setState({
+        buttonGuesses: [...this.state.buttonGuesses, id]
+      });
+      console.log(this.state.buttonGuesses);
     }
 
     render() {
@@ -27,7 +39,12 @@ class Main extends React.Component {
         <div>
           <Jumbotron  />
           <main>
-            {this.state.buttonPossibilities.map(item => <GameButton key={item.id} imageLink={item.imageLink} />)}
+            {this.state.buttonPossibilities.map(({imageLink, id}) => <GameButton 
+              key={id}
+              id={id}
+              imageLink={imageLink}
+              updateGuess={this.updateGuess}
+            />)}
           </main>
         </div>
       );
