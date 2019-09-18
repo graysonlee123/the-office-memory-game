@@ -49,6 +49,13 @@ table {
 
 /* End Meyer CSS Reset */
 
+:root {
+  --nav-height: 100px;
+  --footer-height: 100px;
+}
+
 #container {
-  background-color: green;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: var(--nav-height) 1fr var(--footer-height);
 }

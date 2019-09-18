@@ -3,9 +3,15 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <main id="container">
+    <div id="container">
       <Navbar />
-    </main>
+      <main>
+        Content
+      </main>
+      <footer>
+        Footer
+      </footer>
+    </div>
   );
 }
 
