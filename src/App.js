@@ -21,24 +21,43 @@ class App extends React.Component {
       {
         id: 3,
         imageLink: "https://via.placeholder.com/400"
+      }, 
+      {
+        id: 4,
+        imageLink: "https://via.placeholder.com/500"
       }
     ]
   };
 
   componentDidMount  = () => {
-    this.randomizeOrder();
+    this.initializeGame();
   };
 
-  updateGuess = id => {
-    if (this.state.buttonGuesses.includes(id)) {
-      this.setState({
-        buttonGuesses: [],
-        score: 0
-      });
-      this.randomizeOrder();
-      // Some other visual function
+  finishGame = (winBoolean = false) => {
+    if (winBoolean) {
+      console.log("Victory");
+      this.initializeGame();
+    } else {
+      console.log("Defeat");
+      this.initializeGame();
+    }
+  }
 
-      const display = document.getElementById('main')
+  initializeGame = () => {
+    this.randomizeOrder();
+    this.setState({
+      score: 0,
+      buttonGuesses: []
+    });
+  }
+
+  updateGuess = id => {
+    this.randomizeOrder();
+
+    if (this.state.buttonGuesses.includes(id)) {
+      this.finishGame();
+
+      const display = document.getElementById('main-wrapper');
 
       display.classList.add('shake-animation');
       setTimeout(() => {
@@ -46,12 +65,20 @@ class App extends React.Component {
       }, 400);
 
       return;
-    }
+    } 
 
     this.setState({
       buttonGuesses: [...this.state.buttonGuesses, id],
-      score: this.state.score + 1,
+      score: 1 + this.state.score,
       highScore: this.state.score > this.state.highScore ? this.state.score : this.state.highScore
+    }, () => {
+      if (this.state.highScore < this.state.score) {
+        this.setState({highScore: this.state.score})
+      }
+
+      if (this.state.score === this.state.buttonPossibilities.length) {
+        this.finishGame(true);
+      }
     });
   };
 
@@ -81,14 +108,16 @@ class App extends React.Component {
         <div>
         <Jumbotron  />
         <main id="main">
-          {this.state.buttonPossibilities.map(({imageLink, id}) => 
-            <GameButton 
-              key={id}
-              id={id}
-              imageLink={imageLink}
-              updateGuess={this.updateGuess}
-            />  
-          )}
+          <div id="main-wrapper">
+            {this.state.buttonPossibilities.map(({imageLink, id}) => 
+              <GameButton 
+                key={id}
+                id={id}
+                imageLink={imageLink}
+                updateGuess={this.updateGuess}
+              />  
+            )}
+          </div>
         </main>
       </div>
         <Footer />
