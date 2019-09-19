@@ -20,7 +20,7 @@ class Slider extends React.Component {
         return (
             <form>
                 <span>{this.state.difficulty}</span>
-                <input name="difficulty-slider" type="range" min="1" max="19" value={this.state.difficulty} className="difficulty-slider" onChange={this.handleUpdateDifficulty}/>
+                <input name="difficulty-slider" type="range" min="9" max={this.props.maxDifficulty} value={this.state.difficulty} className="difficulty-slider" onChange={this.handleUpdateDifficulty}/>
                 <button onClick={this.handleSubmit}>Submit</button>
             </form>
         )

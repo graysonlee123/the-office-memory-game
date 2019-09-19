@@ -12,7 +12,7 @@ class Navbar extends React.Component {
         <nav>
           Guesses: {this.props.score}
           High score: {this.props.highScore}
-          <Slider changeDifficulty={this.props.changeDifficulty} />
+          <Slider maxDifficulty={this.props.maxDifficulty} changeDifficulty={this.props.changeDifficulty} />
         </nav>
       );
     }
