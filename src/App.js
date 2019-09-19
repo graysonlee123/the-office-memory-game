@@ -8,6 +8,7 @@ class App extends React.Component {
   state = {
     score: 0,
     highScore: 0,
+    difficulty: 10,
     buttonGuesses: [],
     buttonPossibilities: [
       {
@@ -158,12 +159,17 @@ class App extends React.Component {
     });
   }
 
+  changeDifficulty = difficulty => {
+    console.log(difficulty);
+  }
+
   render() {
     return (
       <div id="container">
         <Navbar
           score={this.state.score}
           highScore={this.state.highScore}
+          changeDifficulty={this.changeDifficulty}
         />
         <div>
           <Jumbotron  />

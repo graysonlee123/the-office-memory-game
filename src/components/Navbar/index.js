@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css'
+import Slider from './Slider';
 
 class Navbar extends React.Component {
     state = {
@@ -9,9 +10,9 @@ class Navbar extends React.Component {
     render() {
       return (
         <nav>
-          I'm the Navbar.
           Guesses: {this.props.score}
           High score: {this.props.highScore}
+          <Slider changeDifficulty={this.props.changeDifficulty} />
         </nav>
       );
     }
