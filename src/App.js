@@ -1,8 +1,6 @@
 import React from 'react';
 import characters from './characters.json';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Jumbotron from './components/Jumbotron';
+import Navbar from './components/Sidebar';
 import GameButton from './components/GameButton';
 
 class App extends React.Component {
@@ -97,21 +95,26 @@ class App extends React.Component {
           changeDifficulty={this.changeDifficulty}
         />
         <div>
-          <Jumbotron  />
+          {/* <Jumbotron  /> */}
           <main id="main">
             <div id="main-wrapper">
-              {this.state.buttonPossibilities.map(({imageLink, id}) => 
-                <GameButton 
-                  key={id}
-                  id={id}
-                  imageLink={imageLink}
-                  updateGuess={this.updateGuess}
-                />  
-              )}
+              <div>
+                <div>The</div>
+                <div>Office</div>
+              </div>
+              <div>
+                {this.state.buttonPossibilities.map(({imageLink, id}) => 
+                  <GameButton 
+                    key={id}
+                    id={id}
+                    imageLink={imageLink}
+                    updateGuess={this.updateGuess}
+                  />  
+                )}
+              </div>
             </div>
           </main>
         </div>
-        <Footer />
       </div>
     );
   };

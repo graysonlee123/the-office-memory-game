@@ -1,17 +1,20 @@
 :root {
   --nav-height: 100px;
   --footer-height: 100px;
+  --sidebar-width: 200px;
 }
 
 #container {
-  display: grid;
+  padding-left: var(--sidebar-width);
   min-height: 100vh;
-  grid-template-rows: var(--nav-height) 1fr var(--footer-height);
+  width: 100%;
 }
+
+* {box-sizing: border-box;}
 
 #main-wrapper {
   max-width: 66%;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
