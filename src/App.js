@@ -99,8 +99,8 @@ class App extends React.Component {
           <main id="main">
             <div id="main-wrapper">
               <div>
-                <div>The</div>
-                <div>Office</div>
+                <h2 className="text-headers">The</h2>
+                <h1 className="text-headers">Office</h1>
               </div>
               <div>
                 {this.state.buttonPossibilities.map(({imageLink, id}) => 
