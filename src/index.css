@@ -1,18 +1,36 @@
 :root {
-  --nav-height: 100px;
   --footer-height: 100px;
   --sidebar-width: 200px;
-}
-
-#container {
-  padding-left: var(--sidebar-width);
-  min-height: 100vh;
-  width: 100%;
 }
 
 body {
   box-sizing: border-box;
   font-family: Neebo, sans-serif;
+}
+
+#page-container {
+  width: calc(100% - 200px);
+  padding-left: 200px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+
+  background-color: black;
+  border-radius: 60px;
+  margin: 42px;
+  padding: 42px;
+}
+
+#game-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .text-headers {
@@ -28,15 +46,6 @@ h1.text-headers {
 h2.text-headers {
   margin-top: 42px;
   font-size: 2em;
-}
-
-#main-wrapper {
-  width: 80%;
-  height: 80%;
-  margin: 60px;
-  background-color: black;
-  border-radius: 40px;
-  padding: 42px;
 }
 
 .score-wrapper {

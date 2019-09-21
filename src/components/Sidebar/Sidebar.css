@@ -2,8 +2,9 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: var(--sidebar-width);
+    width: 200px;
     height: 100vh;
+    box-sizing: border-box;
     padding: 16px;
     background-color: black;
     color: white;

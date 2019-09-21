@@ -87,34 +87,29 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="container">
+      <div id="page-container">
         <Navbar
           score={this.state.score}
           highScore={this.state.highScore}
           maxDifficulty={characters.length}
           changeDifficulty={this.changeDifficulty}
         />
-        <div>
-          {/* <Jumbotron  /> */}
-          <main id="main">
-            <div id="main-wrapper">
-              <div>
-                <h2 className="text-headers">The</h2>
-                <h1 className="text-headers">Office</h1>
-              </div>
-              <div>
-                {this.state.buttonPossibilities.map(({imageLink, id}) => 
-                  <GameButton 
-                    key={id}
-                    id={id}
-                    imageLink={imageLink}
-                    updateGuess={this.updateGuess}
-                  />  
-                )}
-              </div>
-            </div>
-          </main>
-        </div>
+        <main id="game-wrapper">
+          <div>
+            <h2 className="text-headers">The</h2>
+            <h1 className="text-headers">Office</h1>
+          </div>
+          <div id="game-cards">
+            {this.state.buttonPossibilities.map(({imageLink, id}) => 
+              <GameButton 
+                key={id}
+                id={id}
+                imageLink={imageLink}
+                updateGuess={this.updateGuess}
+              />  
+            )}
+          </div>
+        </main>
       </div>
     );
   };
