@@ -16,9 +16,9 @@ class App extends React.Component {
   renderScreen = () => {
     if (this.state.victoryScreen === true) {
       return (
-        <div>
-          You Win!
-          <button onClick={this.initializeGame}>Go Again</button>
+        <div className="victory-wrapper">
+          <div className="victory-header">You win!</div>
+          <button className="victory-button" onClick={this.initializeGame}>Go Again</button>
         </div>
       )
     } else return (
