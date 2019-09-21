@@ -30,7 +30,7 @@ class Navbar extends React.Component {
             <DifficultySlider maxDifficulty={this.props.maxDifficulty} changeDifficulty={this.props.changeDifficulty} />
           </div>
           <div className="footer-text">
-            Footer text
+            Made with 💜 by <a href="https://github.com/graysonlee123">graysonlee123</a>
           </div>
         </nav>
       );

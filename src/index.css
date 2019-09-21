@@ -8,6 +8,10 @@ body {
   font-family: Neebo, sans-serif;
 }
 
+a { color: rgb(144, 144, 144); } 
+a:visited { color: rgb(144, 144, 144); } 
+a:hover { color: white; }
+
 #page-container {
   min-height: 100vh;
   width: calc(100% - 200px);
