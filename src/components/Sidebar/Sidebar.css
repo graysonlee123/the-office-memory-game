@@ -14,4 +14,7 @@ nav {
     justify-content: space-between;
 
     text-align: left;
+
+    border-right: 4px solid black;
+    background-image: url('/assets/images/black.png');
 }

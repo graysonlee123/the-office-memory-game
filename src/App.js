@@ -1,7 +1,7 @@
-import React from 'react';
-import characters from './characters.json';
-import Navbar from './components/Sidebar';
-import GameButton from './components/GameButton';
+import React from "react";
+import characters from "./characters.json";
+import Navbar from "./components/Sidebar";
+import GameButton from "./components/GameButton";
 
 class App extends React.Component {
   state = {
@@ -10,11 +10,11 @@ class App extends React.Component {
     difficulty: 10,
     buttonGuesses: [],
     buttonPossibilities: []
-  }
+  };
 
-  componentDidMount  = () => {
+  componentDidMount = () => {
     this.initializeGame();
-  }
+  };
 
   finishGame = (winBoolean = false) => {
     if (winBoolean) {
@@ -24,44 +24,55 @@ class App extends React.Component {
       console.log("Defeat");
       this.initializeGame();
     }
-  }
+  };
 
   initializeGame = () => {
-    this.setState({ 
+    this.setState({
       score: 0,
-      buttonPossibilities: this.randomizeOrder(characters).slice(characters.length - this.state.difficulty)
+      buttonPossibilities: this.randomizeOrder(characters).slice(
+        characters.length - this.state.difficulty
+      ),
+      buttonGuesses: []
     });
-  }
+  };
 
   updateGuess = id => {
     if (this.state.buttonGuesses.includes(id)) {
       this.finishGame();
 
-      const display = document.getElementById('main-wrapper');
+      const display = document.getElementById("game-cards");
 
-      display.classList.add('shake-animation');
+      display.classList.add("shake-animation");
       setTimeout(() => {
-        display.classList.remove('shake-animation');
+        display.classList.remove("shake-animation");
       }, 400);
 
       return;
-    } 
+    }
 
-    this.setState({
-      buttonGuesses: [...this.state.buttonGuesses, id],
-      buttonPossibilities: this.randomizeOrder(this.state.buttonPossibilities),
-      score: 1 + this.state.score,
-      highScore: this.state.score > this.state.highScore ? this.state.score : this.state.highScore
-    }, () => {
-      if (this.state.highScore < this.state.score) {
-        this.setState({highScore: this.state.score})
-      }
+    this.setState(
+      {
+        buttonGuesses: [...this.state.buttonGuesses, id],
+        buttonPossibilities: this.randomizeOrder(
+          this.state.buttonPossibilities
+        ),
+        score: 1 + this.state.score,
+        highScore:
+          this.state.score > this.state.highScore
+            ? this.state.score
+            : this.state.highScore
+      },
+      () => {
+        if (this.state.highScore < this.state.score) {
+          this.setState({ highScore: this.state.score });
+        }
 
-      if (this.state.score === this.state.buttonPossibilities.length) {
-        this.finishGame(true);
+        if (this.state.score === this.state.buttonPossibilities.length) {
+          this.finishGame(true);
+        }
       }
-    });
-  }
+    );
+  };
 
   randomizeOrder = arr => {
     // This is a Fisher-Yates shuffle algorithm.
@@ -77,13 +88,13 @@ class App extends React.Component {
     // this.setState({
     //   buttonPossibilities: rand
     // });
-  }
+  };
 
   changeDifficulty = difficulty => {
     this.setState({ difficulty: difficulty }, () => {
       this.initializeGame();
     });
-  }
+  };
 
   render() {
     return (
@@ -95,24 +106,34 @@ class App extends React.Component {
           changeDifficulty={this.changeDifficulty}
         />
         <main id="game-wrapper">
-          <div>
-            <h2 className="text-headers">The</h2>
-            <h1 className="text-headers">Office</h1>
+          <div className="game-desc">
+            <div className="headers-container">
+              <h2 className="text-headers">The</h2>
+              <h1 className="text-headers">Office</h1>
+            </div>
+            <div className="desc">
+              <div className="desc-header">About the Game</div>
+              <div className="desc-text faint">
+                The objective of the game is to click all the characters{" "}
+                <i>once</i>. They shuffle around, so make sure you keep track of
+                your previous guesses.
+              </div>
+            </div>
           </div>
           <div id="game-cards">
-            {this.state.buttonPossibilities.map(({imageLink, id}) => 
-              <GameButton 
+            {this.state.buttonPossibilities.map(({ imageLink, id }) => (
+              <GameButton
                 key={id}
                 id={id}
                 imageLink={imageLink}
                 updateGuess={this.updateGuess}
-              />  
-            )}
+              />
+            ))}
           </div>
         </main>
       </div>
     );
-  };
+  }
 }
 
 export default App;
