@@ -10,11 +10,13 @@
   width: 100%;
 }
 
-* {box-sizing: border-box;}
+body {
+  box-sizing: border-box;
+  font-family: Neebo, sans-serif;
+}
 
 .text-headers {
   color: white;
-  font-family: Neebo, sans-serif;
   font-size: 3em;
   font-weight: bold;
 }
@@ -35,6 +37,19 @@ h2.text-headers {
   background-color: black;
   border-radius: 40px;
   padding: 42px;
+}
+
+.score-wrapper {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid white;
+}
+
+.faint { opacity: 0.5; }
+
+.score {
+  font-size: 4em;
+  font-weight: bold;
 }
 
 .shake-animation {

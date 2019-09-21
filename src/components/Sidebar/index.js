@@ -11,16 +11,16 @@ class Navbar extends React.Component {
       return (
         <nav>
           <div>
-            <div>
-              <div>
+            <div className="score-wrapper">
+              <div className="score">
                 {this.props.score}
               </div>
               <div>
                 Current Score
               </div>
             </div>
-            <div>
-              <div>
+            <div className="score-wrapper">
+              <div className="score faint">
                 {this.props.highScore}
               </div>
               <div>

@@ -1,0 +1,59 @@
+.difficulty-slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%;
+  height: 1px;
+  background: white; 
+  outline: none; 
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin: 24px 0;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.difficulty-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 12px; /* Set a specific slider handle width */
+  height: 12px; /* Slider handle height */
+  border-radius: 15px;
+  background: white; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.difficulty-slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider-container:hover .difficulty-slider::-webkit-slider-thumb {
+    transform: scale(1.5);
+}
+
+.slider-container:hover .difficulty-slider::-moz-range-thumb {
+    transform: scale(1.5);
+}
+
+.button-container {
+    text-align: center;
+}
+
+.difficulty-button {
+    opacity: 0;
+    outline: none;
+    border: 1px solid white;
+    padding: 12px 32px;
+    border-radius: 60px;
+    background: none;
+    color: white;
+    transition: all 400ms ease-in-out;
+}
+
+.difficulty-button[data-ready="true"] {
+    opacity: 1;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
