@@ -102,8 +102,8 @@ h2.text-headers {
 
 .victory-wrapper {
   padding: 16px;
-  width: 160px;
-  height: 210px;
+  width: 200px;
+  height: auto;
   background-color: black;
   background-image: url('/assets/images/black.png');
   box-shadow: 12px 12px 8px rgba(0,0,0,0.2);
@@ -132,11 +132,27 @@ h2.text-headers {
   color: white;
   cursor: pointer;
   transition: all 400ms ease-in-out;
+  margin-bottom: 24px;
 }
 
 .victory-button:hover {
   background-color: white;
   color: black;
+}
+
+.victory-quote {
+  line-height: 1.1em;
+  margin-bottom: 12px;
+}
+
+.victory-quote-character {
+  text-align: right;
+  width: 100%;
+  font-style: oblique;
+}
+
+.victory-quote-character::before {
+  content: '—'
 }
 
 .shake-animation {

@@ -2,6 +2,14 @@ import React from "react";
 import characters from "./characters.json";
 import Navbar from "./components/Sidebar";
 import GameButton from "./components/GameButton";
+import quotes from './quotes.json';
+import Confetti from 'react-confetti';
+
+function MakeConfetti() {
+  return (
+    <Confetti />
+  )
+}
 
 class App extends React.Component {
   state = {
@@ -15,10 +23,16 @@ class App extends React.Component {
 
   renderScreen = () => {
     if (this.state.victoryScreen === true) {
+      const quoteIdx =  Math.floor(Math.random() * quotes.length);
+
+
       return (
         <div className="victory-wrapper">
+          <MakeConfetti initialVelocityY="10000" />
           <div className="victory-header">You win!</div>
           <button className="victory-button" onClick={this.initializeGame}>Go Again</button>
+          <p className="victory-quote">"{quotes[quoteIdx].quote}"</p>
+          <p className="victory-quote-character">{quotes[quoteIdx].character}</p>
         </div>
       )
     } else return (
