@@ -4,6 +4,7 @@ import Navbar from "./components/Sidebar";
 import GameButton from "./components/GameButton";
 import quotes from './quotes.json';
 import Confetti from 'react-confetti';
+import './index.css';
 
 function MakeConfetti() {
   return (
