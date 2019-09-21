@@ -8,9 +8,49 @@ class App extends React.Component {
     score: 0,
     highScore: 0,
     difficulty: 10,
+    victoryScreen: false,
     buttonGuesses: [],
     buttonPossibilities: []
   };
+
+  renderScreen = () => {
+    if (this.state.victoryScreen === true) {
+      return (
+        <div>
+          You Win!
+          <button onClick={this.initializeGame}>Go Again</button>
+        </div>
+      )
+    } else return (
+      <main id="game-wrapper">
+        <div className="game-desc">
+          <div className="headers-container">
+            <h2 className="text-headers">The</h2>
+            <h1 className="text-headers">Office</h1>
+          </div>
+          <div className="desc">
+            <div className="desc-header">About the Game</div>
+            <div className="desc-text faint">
+              The objective of the game is to click all the characters{" "}
+              <i>once</i>. They shuffle around, so make sure you keep track of
+              your previous guesses.
+            </div>
+          </div>
+        </div>
+        <div id="game-cards">
+          {this.state.buttonPossibilities.map(({ imageLink, id }) => (
+            <GameButton
+              key={id}
+              id={id}
+              imageLink={imageLink}
+              updateGuess={this.updateGuess}
+            />
+          ))}
+        </div>
+      </main>
+    );
+    
+  }
 
   componentDidMount = () => {
     this.initializeGame();
@@ -18,8 +58,9 @@ class App extends React.Component {
 
   finishGame = (winBoolean = false) => {
     if (winBoolean) {
-      console.log("Victory - show victory screen");
-      this.initializeGame();
+      this.setState({ victoryScreen: true }, () => {
+        this.render();
+      });
     } else {
       console.log("Defeat");
       this.initializeGame();
@@ -29,6 +70,7 @@ class App extends React.Component {
   initializeGame = () => {
     this.setState({
       score: 0,
+      victoryScreen: false,
       buttonPossibilities: this.randomizeOrder(characters).slice(
         characters.length - this.state.difficulty
       ),
@@ -105,32 +147,7 @@ class App extends React.Component {
           maxDifficulty={characters.length}
           changeDifficulty={this.changeDifficulty}
         />
-        <main id="game-wrapper">
-          <div className="game-desc">
-            <div className="headers-container">
-              <h2 className="text-headers">The</h2>
-              <h1 className="text-headers">Office</h1>
-            </div>
-            <div className="desc">
-              <div className="desc-header">About the Game</div>
-              <div className="desc-text faint">
-                The objective of the game is to click all the characters{" "}
-                <i>once</i>. They shuffle around, so make sure you keep track of
-                your previous guesses.
-              </div>
-            </div>
-          </div>
-          <div id="game-cards">
-            {this.state.buttonPossibilities.map(({ imageLink, id }) => (
-              <GameButton
-                key={id}
-                id={id}
-                imageLink={imageLink}
-                updateGuess={this.updateGuess}
-              />
-            ))}
-          </div>
-        </main>
+        {this.renderScreen()}
       </div>
     );
   }
