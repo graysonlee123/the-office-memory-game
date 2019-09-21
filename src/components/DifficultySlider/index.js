@@ -33,7 +33,7 @@ class Slider extends React.Component {
                 <div className="score faint">{this.state.difficulty}</div>
                 <div>Characters</div>
                 <div className="slider-container">
-                    <input className="difficulty-slider" name="difficulty-slider" type="range" min="2" max={this.props.maxDifficulty} value={this.state.difficulty} onChange={this.handleUpdateDifficulty}/>
+                    <input className="difficulty-slider" name="difficulty-slider" type="range" min="5" max={this.props.maxDifficulty} value={this.state.difficulty} onChange={this.handleUpdateDifficulty}/>
                 </div>
                 <div className="button-container">
                     <button id='difficulty-submit-btn' className="difficulty-button" onClick={this.handleSubmit} data-ready="false">Submit</button>
